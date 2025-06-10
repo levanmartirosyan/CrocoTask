@@ -21,7 +21,7 @@
   @for (todo of todoList; track $index) {
   <div
     class="todo"
-    [style.animation-delay.s]="0.07 * $index + 0.15"
+    [style.animation-delay.s]="0.04 * $index + 0.05"
     [class]="todo.completed ? 'comp' : 'incomp'"
   >
     <div class="header">

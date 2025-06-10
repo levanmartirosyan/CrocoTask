@@ -79,7 +79,7 @@ header {
 
 .burgerMenu {
   width: 100%;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   gap: 20px;
@@ -149,5 +149,8 @@ header {
         display: flex;
       }
     }
+  }
+  .burgerMenu {
+    display: flex;
   }
 }
