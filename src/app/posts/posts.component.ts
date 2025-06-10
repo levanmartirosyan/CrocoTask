@@ -1,8 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { Post, queryParams, User } from '../interfaces/api.interface';
 import { forkJoin, map, Subscription } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-posts',
@@ -11,10 +12,17 @@ import { forkJoin, map, Subscription } from 'rxjs';
   styleUrl: './posts.component.scss',
 })
 export class PostsComponent implements OnInit, OnDestroy {
-  constructor(private apiService: ApiService, private actR: ActivatedRoute) {}
+  constructor(
+    private apiService: ApiService,
+    private actR: ActivatedRoute,
+    private title: Title,
+    private renderer: Renderer2
+  ) {}
 
   ngOnInit(): void {
-    this.getPostsWithUsers();
+    setTimeout(() => {
+      this.getPostsWithUsers();
+    }, 1);
   }
 
   ngOnDestroy(): void {
@@ -47,6 +55,7 @@ export class PostsComponent implements OnInit, OnDestroy {
           next: (enrichedPosts) => {
             this.postList = enrichedPosts;
             sessionStorage.setItem('postList', JSON.stringify(enrichedPosts));
+
             this.getPostsByUser();
           },
           error: (error: unknown) => {},
@@ -67,14 +76,31 @@ export class PostsComponent implements OnInit, OnDestroy {
 
   togglePopUp() {
     this.detailsPopUp = !this.detailsPopUp;
-    document.body.classList.toggle('noScroll');
+    if (this.detailsPopUp) {
+      this.renderer.addClass(document.body, 'noScroll');
+    } else {
+      this.renderer.removeClass(document.body, 'noScroll');
+    }
   }
 
-  getPostsByUser() {
+  public userId?: number;
+  private getPostsByUser(): void {
     this.routeSub = this.actR.queryParams.subscribe((data: queryParams) => {
       if (data.userId) {
+        this.userId = data.userId;
+
         const userId = Number(data.userId);
-        this.postList = this.postList.filter((post) => post.userId === userId);
+
+        const filtered = this.postList.filter((post) => post.userId === userId);
+        this.postList = filtered;
+
+        if (this.postList.length > 0) {
+          this.title.setTitle(
+            'CrocoTask - ' + this.postList[0].userName + "'s posts"
+          );
+        } else {
+          this.title.setTitle('CrocoTask - No posts');
+        }
       }
     });
   }

@@ -1,12 +1,41 @@
 <header>
   <div class="container">
     <div class="logo" routerLink="/">
-      <i class="fi fi-rs-users"></i>
+      <i class="fi fi-rs-users-alt"></i>
       <h1>CrocoTask</h1>
     </div>
     <div class="time">
       <i class="fi fi-rr-calendar"></i>
       <span>{{ currentTime | date : "medium" }}</span>
     </div>
+    <div
+      class="burgerBar"
+      [class.active]="burgerMenu"
+      (click)="toggleBurgerMenu()"
+    >
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
   </div>
 </header>
+
+<div class="burgerMenu" [class.active]="burgerMenu">
+  <div class="time">
+    <i class="fi fi-rr-calendar"></i>
+    <span>{{ currentTime | date : "medium" }}</span>
+  </div>
+  <div
+    class="item"
+    routerLink="/"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <i class="fi fi-rs-users"></i>
+    <p>Users</p>
+  </div>
+  <div class="item" routerLink="/posts" routerLinkActive="active">
+    <i class="fi fi-rs-task-checklist"></i>
+    <p>Posts</p>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Post, User } from '../interfaces/api.interface';
+import { Post, Todo, User } from '../interfaces/api.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -19,11 +19,13 @@ export class ApiService {
     return this.http.get<Post[]>(this.apiLink + '/posts');
   }
 
+  getAllTodos(): Observable<Todo[]> {
+    return this.http.get<Todo[]>(this.apiLink + '/todos');
+  }
+
   getUserById(userId: number): Observable<User> {
     return this.http.get<User>(this.apiLink + `/users/${userId}`);
   }
 
   getCommentsByPost(PostId: number) {}
-
-  getTodosByUser(UserId: number) {}
 }

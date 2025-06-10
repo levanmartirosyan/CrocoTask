@@ -19,4 +19,10 @@ export class HeaderComponent implements OnInit {
       this.currentTime = new Date();
     }, 1000);
   }
+
+  public burgerMenu: boolean = false;
+
+  toggleBurgerMenu() {
+    this.burgerMenu = !this.burgerMenu;
+  }
 }

@@ -1,66 +1,72 @@
 @use "../../../colors" as *;
 
-nav {
-  max-width: 254px;
-  min-width: 254px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 24px;
-  background-color: $secondary;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  .top {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    i {
-      font-size: 20px;
-    }
-  }
-  .nav {
-    width: 100%;
+:host {
+  nav {
+    width: 254px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
-    .item {
-      width: 100%;
-      height: 40px;
-      border-radius: 6px;
-      border: 1px solid $border-color;
+    gap: 16px;
+    padding: 24px;
+    background-color: $secondary;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    color: $primary;
+    .top {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 0 14px;
-      cursor: pointer;
-      transition: 0.3s ease;
+      gap: 10px;
       i {
-        font-size: 16px;
+        font-size: 20px;
       }
-      p {
-        font-size: 18px;
-        font-weight: bold;
-      }
-      &:hover {
-        background-color: $background2;
-      }
-      &.active {
-        background-color: $primary;
-        i,
+    }
+    .nav {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      .item {
+        width: 100%;
+        height: 40px;
+        border-radius: 6px;
+        border: 1px solid $border-color;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0 14px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        i {
+          font-size: 16px;
+        }
         p {
-          color: $secondary;
+          font-size: 18px;
+          font-weight: bold;
         }
         &:hover {
-          background-color: $primary-hover;
+          background-color: $background2;
+        }
+        &.active {
+          background-color: $primary;
+          i,
+          p {
+            color: $secondary;
+          }
+          &:hover {
+            background-color: $primary-hover;
+          }
         }
       }
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    & {
+      display: none;
     }
   }
 }

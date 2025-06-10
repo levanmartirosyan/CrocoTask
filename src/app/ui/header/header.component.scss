@@ -5,6 +5,11 @@ header {
   height: 68px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: $secondary;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
   .container {
     max-width: 1280px;
     width: 100%;
@@ -39,6 +44,109 @@ header {
       span {
         color: $text-color;
         font-size: 16px;
+      }
+    }
+    .burgerBar {
+      width: 31px;
+      height: 31px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 5px;
+
+      .line {
+        width: 90%;
+        height: 2px;
+        background-color: $primary;
+        transition: 0.3s ease;
+        border-radius: 5px;
+      }
+      &.active {
+        .line:nth-child(1) {
+          transform: rotate(45deg) translateY(5px);
+        }
+        .line:nth-child(2) {
+          display: none;
+        }
+        .line:nth-child(3) {
+          transform: rotate(-45deg) translateY(-5px);
+        }
+      }
+    }
+  }
+}
+
+.burgerMenu {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background-color: $secondary;
+  border-radius: 0 0 8px 8px;
+  border: 1px solid $border-color;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  left: 0;
+  right: 0;
+  transform: translateY(-100%);
+  padding: 24px;
+  z-index: 3;
+  .item {
+    width: 100%;
+    height: 40px;
+    border-radius: 6px;
+    border: 1px solid $border-color;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 14px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    i {
+      font-size: 16px;
+    }
+    p {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    &:hover {
+      background-color: $background2;
+    }
+    &.active {
+      background-color: $primary;
+      i,
+      p {
+        color: $secondary;
+      }
+      &:hover {
+        background-color: $primary-hover;
+      }
+    }
+  }
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    transform: translateY(0);
+    top: 69px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  header {
+    .container {
+      padding: 0 16px !important;
+      .time {
+        display: none;
+      }
+      .burgerBar {
+        display: flex;
       }
     }
   }

@@ -15,7 +15,9 @@ export class UserlistComponent implements OnInit, OnDestroy {
   constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
-    this.getAllUsers();
+    setTimeout(() => {
+      this.getAllUsers();
+    }, 1);
   }
 
   ngOnDestroy(): void {
@@ -71,7 +73,7 @@ export class UserlistComponent implements OnInit, OnDestroy {
   }
 
   goToUserstasks(userId: number) {
-    this.router.navigate(['/posts'], {
+    this.router.navigate(['/todos'], {
       queryParams: {
         userId: userId,
       },

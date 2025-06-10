@@ -1,0 +1,44 @@
+@use "../../colors" as *;
+
+.loader {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: $background;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    animation: pulse 1.5s infinite ease-in-out;
+    i {
+      font-size: 36px;
+      color: $primary;
+    }
+    h1 {
+      font-size: 38px;
+      color: $primary;
+    }
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}

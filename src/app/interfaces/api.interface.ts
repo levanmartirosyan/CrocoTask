@@ -37,6 +37,15 @@ export interface Post {
   body: string;
 }
 
+//Todos
+export interface Todo {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
+// QueryParams
 export interface queryParams {
   userId?: number;
 }

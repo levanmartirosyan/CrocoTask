@@ -1,0 +1,51 @@
+<div class="goBackBtn" routerLink="/">
+  <i class="fi fi-rr-arrow-small-left"></i>
+  <span> Go Back</span>
+</div>
+
+<div class="todosQuantity">
+  <i class="fi fi-rs-task-checklist"></i>
+  @if (userId) {
+  <div class="usersTodos">
+    <h2>{{ todoList[0].userName }}'s Todos</h2>
+    <span>Found {{ todoList.length ? todoList.length : 0 }} Todos</span>
+    <span class="comp">Completed - {{ done }} </span>
+    <span class="incomp">Incomplete - {{ incomp }} </span>
+  </div>
+  } @else {
+  <h2>All Todos - {{ todoList.length ? todoList.length : 0 }}</h2>
+  }
+</div>
+
+<div class="todos">
+  @for (todo of todoList; track $index) {
+  <div
+    class="todo"
+    [style.animation-delay.s]="0.07 * $index + 0.15"
+    [class]="todo.completed ? 'comp' : 'incomp'"
+  >
+    <div class="header">
+      <div class="top">
+        <h3>{{ todo.title }}</h3>
+        <div class="postId">
+          <span>#{{ todo.id }}</span>
+        </div>
+      </div>
+      <div class="username">
+        <i class="fi fi-rs-user"></i>
+        <p>{{ todo.userName }}</p>
+      </div>
+    </div>
+    <div class="body">
+      <i
+        [class]="
+          'fi ' + (todo.completed ? 'fi-rr-check comp' : 'fi-rr-circle incomp')
+        "
+      ></i>
+      <p [class]="todo.completed ? 'comp' : 'incomp'">
+        {{ todo.completed ? "Completed" : "Incompleted" }}
+      </p>
+    </div>
+  </div>
+  }
+</div>

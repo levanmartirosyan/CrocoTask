@@ -5,7 +5,14 @@
 
 <div class="postQuantity">
   <i class="fi fi-rr-blog-text"></i>
+  @if (userId) {
+  <div class="usersPosts">
+    <h2>{{ postList[0].userName }}'s Posts</h2>
+    <span>Found {{ postList.length ? postList.length : 0 }} posts</span>
+  </div>
+  } @else {
   <h2>All Posts - {{ postList.length ? postList.length : 0 }}</h2>
+  }
 </div>
 
 <div class="posts">

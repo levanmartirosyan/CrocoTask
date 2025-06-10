@@ -19,38 +19,39 @@
     <i class="fi fi-rs-users"></i>
     <h2>User List</h2>
   </div>
-  <div class="userList">
-    @for (user of usersList; track $index) {
-    <div class="user">
-      <div class="menu">
-        <i class="fi fi-rr-menu-dots"></i>
-      </div>
-      <div class="userInfo">
-        <div class="name">
-          <i class="fi fi-rs-user"></i>
-          <h3>{{ user.name }}</h3>
-        </div>
-        <p class="username">&#64;{{ user.username }}</p>
-        <p class="other">{{ user.email }}</p>
-        <p class="other">{{ user.phone }}</p>
-      </div>
-      <div class="company">
-        <div class="companyName">
-          <p>{{ user.company.name }}</p>
-        </div>
-        <p class="companyPhrase">{{ user.company.catchPhrase }}</p>
-      </div>
-      <div class="btns">
-        <button (click)="goToUsersPost(user.id)">
-          <i class="fi fi-rr-blog-text"></i>
-          Posts
-        </button>
-        <button (click)="goToUserstasks(user.id)">
-          <i class="fi fi-rs-task-checklist"></i>
-          Tasks
-        </button>
-      </div>
-    </div>
-    }
+  <div class="usersTable">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Company</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of usersList; track $index) {
+        <tr>
+          <td>{{ user.name }}</td>
+          <td>&#64;{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone }}</td>
+          <td>
+            {{ user.company.name }}
+          </td>
+          <td class="actionBtns">
+            <button (click)="goToUsersPost(user.id)">
+              <i class="fi fi-rr-blog-text"></i> Posts
+            </button>
+            <button (click)="goToUserstasks(user.id)">
+              <i class="fi fi-rs-task-checklist"></i> Tasks
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
   </div>
 </section>
