@@ -25,4 +25,10 @@ export class HeaderComponent implements OnInit {
   toggleBurgerMenu() {
     this.burgerMenu = !this.burgerMenu;
   }
+
+  closeBurgerMenu() {
+    if (this.burgerMenu) {
+      this.burgerMenu = false;
+    }
+  }
 }
