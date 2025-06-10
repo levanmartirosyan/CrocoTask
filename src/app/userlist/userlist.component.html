@@ -1,0 +1,56 @@
+<div class="search">
+  <div class="top">
+    <i class="fi fi-rs-search"></i>
+    <h2>Search Users</h2>
+  </div>
+  <div class="searchInput">
+    <i class="fi fi-rs-search"></i>
+    <input
+      type="text"
+      placeholder="Search Users By Name, Username or Email..."
+      [(ngModel)]="searchKeyword"
+      (input)="searchUser()"
+    />
+  </div>
+</div>
+
+<section>
+  <div class="head">
+    <i class="fi fi-rs-users"></i>
+    <h2>User List</h2>
+  </div>
+  <div class="userList">
+    @for (user of usersList; track $index) {
+    <div class="user">
+      <div class="menu">
+        <i class="fi fi-rr-menu-dots"></i>
+      </div>
+      <div class="userInfo">
+        <div class="name">
+          <i class="fi fi-rs-user"></i>
+          <h3>{{ user.name }}</h3>
+        </div>
+        <p class="username">&#64;{{ user.username }}</p>
+        <p class="other">{{ user.email }}</p>
+        <p class="other">{{ user.phone }}</p>
+      </div>
+      <div class="company">
+        <div class="companyName">
+          <p>{{ user.company.name }}</p>
+        </div>
+        <p class="companyPhrase">{{ user.company.catchPhrase }}</p>
+      </div>
+      <div class="btns">
+        <button (click)="goToUsersPost(user.id)">
+          <i class="fi fi-rr-blog-text"></i>
+          Posts
+        </button>
+        <button (click)="goToUserstasks(user.id)">
+          <i class="fi fi-rs-task-checklist"></i>
+          Tasks
+        </button>
+      </div>
+    </div>
+    }
+  </div>
+</section>

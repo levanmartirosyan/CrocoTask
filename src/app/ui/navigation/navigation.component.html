@@ -1,0 +1,21 @@
+<nav>
+  <div class="top">
+    <i class="fi fi-rs-task-checklist"></i>
+    <h2>Navigation</h2>
+  </div>
+  <div class="nav">
+    <div
+      class="item"
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <i class="fi fi-rs-users"></i>
+      <p>Users</p>
+    </div>
+    <div class="item" routerLink="/posts" routerLinkActive="active">
+      <i class="fi fi-rs-task-checklist"></i>
+      <p>Posts</p>
+    </div>
+  </div>
+</nav>

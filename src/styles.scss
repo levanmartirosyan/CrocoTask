@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+@use "colors" as *;
+
+@font-face {
+  font-family: "georgian";
+  src: url("/assets/fonts/bpg_nino_mtavruli_normal.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  button,
+  img,
+  i {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+  input {
+    &::placeholder {
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+  }
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: "georgian", sans-serif !important;
+  background-color: $background;
+  display: flex;
+  &.noScroll {
+    overflow: hidden;
+    padding-right: 6px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  border-radius: 12px;
+  background: #d3d3d3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primary;
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 12px;
+}
