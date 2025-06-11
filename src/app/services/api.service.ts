@@ -22,6 +22,4 @@ export class ApiService {
   getAllTodos(): Observable<Todo[]> {
     return this.http.get<Todo[]>(this.apiLink + '/todos');
   }
-
-  getCommentsByPost(PostId: number) {}
 }

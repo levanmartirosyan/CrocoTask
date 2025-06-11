@@ -35,6 +35,7 @@ export class HeaderComponent implements OnInit {
   closeBurgerMenu() {
     if (this.burgerMenu) {
       this.burgerMenu = false;
+      this.renderer.removeClass(document.body, 'noScroll');
     }
   }
 }
