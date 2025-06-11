@@ -53,8 +53,6 @@ export class TodosComponent implements OnInit, OnDestroy {
         .subscribe({
           next: (enrichedPosts) => {
             this.todoList = enrichedPosts;
-            sessionStorage.setItem('postList', JSON.stringify(enrichedPosts));
-
             this.getTodosByUser();
           },
           error: (error: unknown) => {},

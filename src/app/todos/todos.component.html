@@ -26,7 +26,7 @@
   >
     <div class="header">
       <div class="top">
-        <h3>{{ todo.title }}</h3>
+        <h3 [class.strikethrough]="todo.completed">{{ todo.title }}</h3>
         <div class="postId">
           <span>#{{ todo.id }}</span>
         </div>

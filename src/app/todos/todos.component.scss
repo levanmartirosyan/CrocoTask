@@ -126,6 +126,10 @@
             overflow: hidden;
             text-overflow: ellipsis;
             color: $primary;
+            &.strikethrough {
+              text-decoration: line-through;
+              opacity: 0.8;
+            }
           }
           .postId {
             font-family: sans-serif !important;
@@ -135,6 +139,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            color: $primary;
             span {
               font-size: 12px;
             }

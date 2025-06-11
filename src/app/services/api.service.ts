@@ -23,9 +23,5 @@ export class ApiService {
     return this.http.get<Todo[]>(this.apiLink + '/todos');
   }
 
-  getUserById(userId: number): Observable<User> {
-    return this.http.get<User>(this.apiLink + `/users/${userId}`);
-  }
-
   getCommentsByPost(PostId: number) {}
 }

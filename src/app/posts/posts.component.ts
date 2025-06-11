@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ApiService } from '../services/api.service';
-import { Post, queryParams, User } from '../interfaces/api.interface';
+import { Post, queryParams } from '../interfaces/api.interface';
 import { forkJoin, map, Subscription } from 'rxjs';
 import { Title } from '@angular/platform-browser';
 
@@ -36,6 +36,11 @@ export class PostsComponent implements OnInit, OnDestroy {
   public postList: (Post & { userName?: string })[] = [];
 
   private getPostsWithUsers(): void {
+    const posts = sessionStorage.getItem('postList');
+    if (posts) {
+      this.postList = JSON.parse(posts);
+    }
+
     this.postSubscription.add(
       forkJoin({
         posts: this.apiService.getAllPosts(),
