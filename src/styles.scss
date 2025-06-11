@@ -35,6 +35,10 @@
   }
 }
 
+html {
+  overflow-y: scroll;
+}
+
 body {
   width: 100%;
   min-height: 100vh;
@@ -45,6 +49,11 @@ body {
   &.noScroll {
     overflow: hidden;
     padding-right: 6px;
+    position: fixed;
+    width: 100%;
+    @media screen and (max-width: 1024px) {
+      padding: 0;
+    }
   }
 
   scrollbar-width: thin;
