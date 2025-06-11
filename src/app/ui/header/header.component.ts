@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { NavigationEnd, Router, RouterModule } from '@angular/router';
-import { filter } from 'rxjs';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,17 +9,9 @@ import { filter } from 'rxjs';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit {
-  constructor(private renderer: Renderer2, private router: Router) {}
-
+  constructor(private renderer: Renderer2) {}
   ngOnInit(): void {
     this.getCurrentTime();
-
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe(() => {
-        this.burgerMenu = false;
-        this.renderer.removeClass(document.body, 'noScroll');
-      });
   }
 
   public currentTime: Date = new Date();
@@ -32,8 +23,7 @@ export class HeaderComponent implements OnInit {
 
   public burgerMenu: boolean = false;
 
-  toggleBurgerMenu(event: Event) {
-    event.stopPropagation();
+  toggleBurgerMenu() {
     this.burgerMenu = !this.burgerMenu;
     if (this.burgerMenu) {
       this.renderer.addClass(document.body, 'noScroll');

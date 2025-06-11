@@ -100,13 +100,17 @@
       border: 1px solid $border-color;
       transition: 0.3s ease;
       flex: 1;
-      animation: slideDown 0.3s ease-in-out forwards;
-      opacity: 0;
-      transform: translateY(-30px);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 14px;
+      opacity: 1;
+      transform: none;
+      &.animated {
+        animation: slideDown 0.3s ease-in-out forwards;
+        opacity: 0;
+        transform: translateY(-30px);
+      }
       .header {
         width: 100%;
         display: flex;
