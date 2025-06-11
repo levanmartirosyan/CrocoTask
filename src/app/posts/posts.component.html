@@ -17,11 +17,7 @@
 
 <div class="posts">
   @for (post of postList; track $index) {
-  <div
-    class="post"
-    [class.animated]="$index < 15"
-    [style.animation-delay.s]="$index < 15 ? 0.04 * $index + 0.05 : 0"
-  >
+  <div class="post">
     <div class="header">
       <div class="top">
         <h3>{{ post.title }}</h3>
