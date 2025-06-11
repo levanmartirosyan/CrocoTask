@@ -32,7 +32,8 @@ export class HeaderComponent implements OnInit {
 
   public burgerMenu: boolean = false;
 
-  toggleBurgerMenu() {
+  toggleBurgerMenu(event: Event) {
+    event.stopPropagation();
     this.burgerMenu = !this.burgerMenu;
     if (this.burgerMenu) {
       this.renderer.addClass(document.body, 'noScroll');
