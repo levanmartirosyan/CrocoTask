@@ -7,10 +7,13 @@
   font-style: normal;
 }
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
   button,
   img,
   i {
@@ -18,13 +21,16 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    -o-user-select: none;
   }
+
   input {
     &::placeholder {
       user-select: none;
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
+      -o-user-select: none;
     }
   }
 }
@@ -35,10 +41,14 @@ body {
   font-family: "georgian", sans-serif !important;
   background-color: $background;
   display: flex;
+
   &.noScroll {
     overflow: hidden;
     padding-right: 6px;
   }
+
+  scrollbar-width: thin;
+  scrollbar-color: $primary #d3d3d3;
 }
 
 ::-webkit-scrollbar {
